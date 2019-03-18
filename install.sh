@@ -8,6 +8,7 @@ base=~/.i3
 i3conf=~/.config/i3/config
 #i3conf=~/Documentos/cursos/config
 rofiThemeConfig=~/.config/rofi
+crona_path=/var/spool/cron
 
 instalar_dependencias()
 {
@@ -62,6 +63,17 @@ instalar_personalizacion()
     echo "Configurando i3WM"
     touch $i3conf
     cp $i3_config $i3conf
+    sleep 1
+
+    echo "Cargando Procesos..."
+    batteryProcess=$HOME/.i3/scripts/batteryNotify.sh
+    user=$(whoami)
+    if [ ! -d $crona_path ]; then
+        mkdir -p $crona_path
+    fi
+    cat "* * * * * XDG_RUNTIME_DIR=/run/user/$(id -u) $batteryProcess" >> $crona_path/$user
+    sudo systemctl start cronie.service
+    sudo systemctl enable cronie.service
     sleep 1
 
     echo "Para que los cambios surtan efecto poner WIN+SHIFT+R para reiniciar i3"
