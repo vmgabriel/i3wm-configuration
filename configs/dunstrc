@@ -1,8 +1,8 @@
 [global]
 monitor = 0
-font = "Fantasque Sans Mono 12"
+font = "Fantasque Sans Mono 10"
 follow = mouse
-geometry = "300x60-20+48"
+geometry = "350x60-20+48"
 indicate_hidden = yes
 shrink = no
 separator_height = 0
