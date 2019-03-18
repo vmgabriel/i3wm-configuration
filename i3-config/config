@@ -307,6 +307,8 @@ set $video-fondo ~/Vídeos/Fondos/8bits-DarkSouls.mp4
 
 exec -–no-startup-id volumeicon
 exec --no-startup-id dunst -config ~/.i3/configs/dunstrc
+exec --no-startup-id liferea &
+exec --no-startup-id thunderbird &
 exec --no-startup-id nice -n 15 xwinwrap -b -sp -ov -fs -s -o 1.000000 -- mplayer $video-fondo -quiet -noconsolecontrols -loop 0 -nosound -wid WID
 
 # COLOR Y BARRA
