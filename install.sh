@@ -9,6 +9,7 @@ i3conf=~/.config/i3/config
 #i3conf=~/Documentos/cursos/config
 rofiThemeConfig=~/.config/rofi
 crona_path=/var/spool/cron
+user=$(whoami)
 
 instalar_dependencias()
 {
@@ -67,14 +68,45 @@ instalar_personalizacion()
 
     echo "Cargando Procesos..."
     batteryProcess=$HOME/.i3/scripts/batteryNotify.sh
-    user=$(whoami)
     if [ ! -d $crona_path ]; then
         mkdir -p $crona_path
     fi
-    cat "* * * * * XDG_RUNTIME_DIR=/run/user/$(id -u) $batteryProcess" >> $crona_path/$user
+    echo "* * * * * XDG_RUNTIME_DIR=/run/user/\$(id -u) $batteryProcess" >> $crona_path/$user
     sudo systemctl start cronie.service
     sudo systemctl enable cronie.service
     sleep 1
+
+    echo "Configuracion de MPD"
+    mpdSU=/etc/mpd.conf
+    mpdUS=~/.config/mpd
+    mpdPath=$base/mpd
+    archivoMPD=$base/configs/mpd.conf
+    echo "# Configuracion hecha por: Gabriel Vargas Monroy" > $archivoMPD
+    echo "" >> $archivoMPD
+    echo "auto_update \"yes\"" >> $archivoMPD
+    echo "bind_to_address \"0.0.0.0\"" >> $archivoMPD
+    echo "" >> $archivoMPD
+    echo "music_directory \"$HOME/Música\"" >> $archivoMPD
+    echo "playlist_directory \"$HOME/.i3/mpd/playlists\"" >> $archivoMPD
+    echo "db_file \"$HOME/.i3/mpd/tag_cache\"" >> $archivoMPD
+    echo "log_file \"$HOME/.i3/mpd/log\"" >> $archivoMPD
+    echo "pid_file \"$HOME/.i3/mpd/pid\"" >> $archivoMPD
+    echo "state_file \"$HOME/.i3/mpd/state\"" >> $archivoMPD
+    echo "" >> $archivoMPD
+    echo "user \"$user\"" >> $archivoMPD
+    sudo cp $archivoMPD $mpdSU
+    sudo chmod 644 $mpdSU
+    if [ ! -e $mpdUS ]; then
+        mkdir $mpdUS
+        touch $mpdUS/mpd.conf
+    fi
+    cp $archivoMPD $mpdUS
+    if [ ! -d $mpdPath ]; then
+        mkdir $mpdPath
+    fi
+    mkdir $mpdPath/playlists
+    touch $mpdPath/pid
+    touch $mpdPath/error.log
 
     echo "Para que los cambios surtan efecto poner WIN+SHIFT+R para reiniciar i3"
     sleep 3
