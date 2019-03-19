@@ -105,6 +105,7 @@ instalar_personalizacion()
         mkdir $mpdPath
     fi
     mkdir $mpdPath/playlists
+    chmod 755 $mpdPath/playlists
     touch $mpdPath/pid
     touch $mpdPath/error.log
 
