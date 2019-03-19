@@ -10,3 +10,7 @@ Mar 18 19:27 : exception: RTIOThread could not get realtime scheduling, continui
 Mar 18 19:50 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
 Mar 18 20:06 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
 Mar 18 20:07 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Mar 18 20:54 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Mar 18 20:55 : client: [0] opened from 127.0.0.1:40652
+Mar 18 20:55 : exception: Failed to read mixer for 'default detected output': no such mixer control: PCM
+Mar 18 20:55 : client: [0] closed

@@ -108,9 +108,22 @@ instalar_personalizacion()
     chmod 755 $mpdPath/playlists
     touch $mpdPath/pid
     touch $mpdPath/error.log
+    sleep 1
+
+    echo "Configurando Ncmpcpp"
+    ncmpcppSU=/usr/share/doc/ncmpcpp/config
+    ncmpcppPath=$base/ncmpcpp
+    echo "# Configuracion hecha por: Gabriel Vargas Monroy" > $ncmpcppPath/config-sudo
+    echo "" >> $ncmpcppPath/config-sudo
+    echo "ncmpcpp_directory = $base/ncmpcpp" >> $ncmpcppPath/config-sudo
+    echo "mpd_host localhost" >> $ncmpcppPath/config-sudo
+    echo "mpd_port 6600" >> $ncmpcppPath/config-sudo
+    echo "mpd_music_dir = $HOME/Música" >> $ncmpcppPath/config-sudo
+    sudo mv $ncmpcppSU $ncmpcppSU-backup
+    sudo cp $ncmpcppPath/config-sudo $ncmpcppSU
+    sleep 1
 
     echo "Para que los cambios surtan efecto poner WIN+SHIFT+R para reiniciar i3"
-    sleep 3
 }
 
 # Limpiar la pantalla
