@@ -305,6 +305,7 @@ mode "$mode_gaps_outer" {
 
 set $video-fondo ~/Vídeos/Fondos/8bits-DarkSouls.mp4
 
+exec --no-startup-id mpd
 exec -–no-startup-id volumeicon
 exec --no-startup-id dunst -config ~/.i3/configs/dunstrc
 exec --no-startup-id liferea &
@@ -329,7 +330,7 @@ bar {
     mode dock
     workspace_buttons yes
     status_command ~/.i3/scripts/conky.sh
-    tray_output none
+    tray_output primary
 
 	colors {
         background $bg-color
