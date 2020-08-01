@@ -56,7 +56,7 @@ instalar_personalizacion()
 
     echo "Configuracion de Rofi"
     if [ ! -d $rofiThemeConfig ]; then
-        mdkir -p $rofiThemeConfig
+        mkdir -p $rofiThemeConfig
     fi
     cp -Rf $rofi_theme/* $rofiThemeConfig/
     sleep 1
