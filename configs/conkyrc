@@ -1,34 +1,18 @@
-#run in console out of X
-out_to_x no
-own_window no
-out_to_console yes
-background no
-max_text_width 0
-
-#behaviour
-update_interval 1.0
-
-# number of cpu samples to average
-# set to 1 to disable averaging
-cpu_avg_samples 2
-
-# Add spaces to keep things from moving about?  This only affects certain objects.
-# use_spacer should have an argument of left, right, or none
-use_spacer left
-
-# Force UTF8? note that UTF8 support required XFT
-override_utf8_locale yes
-
-#font
-use_xft yes
-xftfont tamsyn:size=8
-# xftfont terminus:size=8
-
-# JSON for i3bar
-# Stuff after 'TEXT' will be formatted on screen
-
-TEXT
-  [
+conky.config = {
+  out_to_x = false,
+  own_window = false,
+  out_to_console = true,
+  background = false,
+  max_text_width = 0,
+  update_interval = 1.0,
+  cpu_avg_samples = 2,
+  use_spacer = 'left',
+  use_xft = true,
+  font = 'caviar tamsyn:size=8',
+  override_utf8_locale = true,
+}
+conky.text = [[
+[
   { "full_text" : "Cpu" , "color" : "\#b492b6" } ,
   { "full_text" : "${cpu}% - [$cpubar] " , "color" : "\#ff0000" } ,
   { "full_text" : "Ram" , "color" : "\#b492b6" } ,
@@ -39,4 +23,5 @@ TEXT
   { "full_text" : "${battery_percent BAT0}%", "color" : "\#DC322F" } ,
   { "full_text" : "Fecha" , "color" : "\#b492b6" } ,
   { "full_text" : "${time %b %d %Y %I:%M%P}" }
-  ] ,
+] ,
+]]
