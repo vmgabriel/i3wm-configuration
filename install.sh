@@ -26,6 +26,32 @@ instalar_dependencias()
     echo "Hecho"
 }
 
+instalar_dependencias_aur()
+{
+    programs=`cat aur.dat`
+    workdir=$(pwd)
+
+    echo 'Instalando Yaourt'
+    git clone https://github.com/archlinuxfr/package-query.git ~/package-query
+    cd ~/package-query
+    makepkg -csi
+    cd ..
+    git clone https://github.com/archlinuxfr/yaourt.git ~/yaourt
+    cd ~/yaourt
+    makepkg -csi
+    cd ..
+    clear
+    cd $workdir
+    echo 'Configurando Yaourt'
+    cp ./configs/.yaourtrc ~
+    clear
+    echo "Instalando las dependencias de AUR"
+    yaourt -S $programs
+    rm ~/.yaourtrc
+    echo "Finalizado yaourt"
+    clear
+}
+
 salvar_personalizacion_actual()
 {
     base_back=$base-backup
@@ -143,5 +169,6 @@ case $opcion in
     s|S|Y|y)
         salvar_personalizacion_actual
         instalar_dependencias
+        instalar_dependencias_aur
         instalar_personalizacion
 esac
