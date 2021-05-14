@@ -52,6 +52,21 @@ instalar_dependencias_aur()
     clear
 }
 
+configurar_rmtrash()
+{
+    echo 'Configurando rmtrash'
+    echo "alias rm='rmtrash'" >> ~/.zshrc
+    echo "alias rmdir='rmdirtrash'" >> ~/.zshrc
+    echo "alias sudo='sudo '" >> ~/.zshrc
+    echo "alias rm='rmtrash'" >> ~/.bashrc
+    echo "alias rmdir='rmdirtrash'" >> ~/.bashrc
+    echo "alias sudo='sudo '" >> ~/.bashrc
+    echo "alias rm='rmtrash'" >> ~/.bash_profile
+    echo "alias rmdir='rmdirtrash'" >> ~/.bash_profile
+    echo "alias sudo='sudo '" >> ~/.bash_profile
+    clear
+}
+
 salvar_personalizacion_actual()
 {
     base_back=$base-backup
@@ -170,5 +185,6 @@ case $opcion in
         salvar_personalizacion_actual
         instalar_dependencias
         instalar_dependencias_aur
+        configurar_rmtrash
         instalar_personalizacion
 esac
