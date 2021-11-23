@@ -109,8 +109,8 @@ bindsym $mod+a focus parent
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "Term"
 set $ws2 "Web"
-set $ws3 "Work"
-set $ws4 "Develop"
+set $ws3 "Develop"
+set $ws4 "Work"
 set $ws5 "Read"
 set $ws6 "Music"
 set $ws7 "7"
@@ -235,11 +235,12 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 # decrease
 
 assign [class="termite|Termite"] $ws1
 assign [class="tilix|Tilix"] $ws1
+assign [class="alacritty|Alacritty"] $ws1
 assign [class="firefox|Firefox"] $ws2
 assign [class="epiphany|Epiphany"] $ws2
-assign [class="nautilus|Nautilus|Thunar|thunar|Eog|eog"] $ws3
-assign [class="Atom|atom|Gedit|gedit"] $ws4
-assign [class="emacs|Emacs|emacs-26.1"] $ws4
+assign [class="Atom|atom|Gedit|gedit"] $ws3
+assign [class="emacs|Emacs|emacs-26.1"] $ws3
+assign [class="nautilus|Nautilus|Thunar|thunar|Eog|eog"] $ws4
 assign [class="evince|Evince"] $ws5
 assign [class="spotify|Spotify|lollypop"] $ws6
 for_window [class="Spotify|spotify"] move to $ws6

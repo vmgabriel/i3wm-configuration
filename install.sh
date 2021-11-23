@@ -32,21 +32,8 @@ instalar_dependencias_aur()
     workdir=$(pwd)
 
     echo 'Instalando Yaourt'
-    git clone https://github.com/archlinuxfr/package-query.git ~/package-query
-    cd ~/package-query
-    makepkg -csi
-    cd ..
-    git clone https://github.com/archlinuxfr/yaourt.git ~/yaourt
-    cd ~/yaourt
-    makepkg -csi
-    cd ..
-    clear
-    cd $workdir
-    echo 'Configurando Yaourt'
-    cp ./configs/.yaourtrc ~
-    clear
     echo "Instalando las dependencias de AUR"
-    yaourt -S $programs
+    yay -S $programs
     rm ~/.yaourtrc
     echo "Finalizado yaourt"
     clear
